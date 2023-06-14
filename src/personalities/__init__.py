@@ -1,3 +1,13 @@
+from .luna import luna
+from .sacha import sacha
+from .lucas import qiuxiao # 这是你的新人格
+
+__all__ = [
+    "sacha"、
+    "luna"、
+    "qiuxiao", # 在这里添加你的个性
+    "get_personality"
+]
 from pathlib import Path
 from typing import List, Dict, Optional
 
@@ -26,7 +36,10 @@ for personality_file in personality_files:
 
 def get_personality(name: str):
     try:
-        # personality_name = PersonalityName(name)
-        return personalities[name]
+        return {
+            "luna": luna,
+            "sacha": sacha,
+            "lucas": qiuxiao  # Add your personality here
+        }[name]
     except Exception:
-        raise Exception(f"The personality you selected ({name}) does not exist!")
+        raise Exception("The personality you selected does not exist!")
